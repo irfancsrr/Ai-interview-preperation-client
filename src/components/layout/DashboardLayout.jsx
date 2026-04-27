@@ -11,7 +11,7 @@ const [menuOpen, setMenuOpen] = useState(false);
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <div className="flex">
         <Sidebar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <main className="flex-1 p-6 lg:p-8 max-w-5xl">
+        <main className="flex-1 p-6 lg:p-8 max-w-5xl  overflow-hidden">
           <Outlet />
         </main>
       </div>

@@ -30,14 +30,14 @@ export default function Dashboard() {
   if (isLoading && sessions.length === 0) return <Loader text="Loading dashboard..." />;
 
   return (
-    <div>
+    <div >
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-gray-900">Welcome back, {user?.name?.split(' ')[0]}!</h1>
         <p className="text-gray-500 mt-1">Here's your interview preparation overview</p>
       </div>
       
       {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 ">
         {[
           { label: 'Total Sessions', value: overview?.totalSessions || 0, color: 'text-indigo-600' },
           { label: 'Completed', value: overview?.completedSessions || 0, color: 'text-green-600' },
