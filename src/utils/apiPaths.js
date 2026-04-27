@@ -1,4 +1,4 @@
-export const API_BASE = 'http://localhost:5000/api';
+export const API_BASE = 'https://ai-interview-preperation-backend-l9l3.onrender.com/api';
 
 export const API_PATHS = {
   AUTH: {
