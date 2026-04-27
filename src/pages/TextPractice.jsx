@@ -118,7 +118,36 @@ export default function TextPractice() {
       )}
 
       {/* Navigation */}
-      <div className="flex items-center justify-between">
+      {/* for small devices */}
+      <div className="flex items-center justify-between lg:hidden">
+        <button onClick={() => { setCurrentIndex(Math.max(0, currentIndex - 1)); setUserAnswer(''); }}
+          disabled={currentIndex === 0} className="btn-secondary flex items-center gap-1 text-sm">
+          <FiChevronLeft size={16} /> 
+        </button>
+        <div className="flex gap-1">
+          {questions.map((q, i) => (
+            <button key={i} onClick={() => { setCurrentIndex(i); setUserAnswer(''); }}
+              className={`w-8 h-8 rounded-full text-xs font-medium transition-colors ${
+                i === currentIndex ? 'bg-indigo-600 text-white' :
+                q.aiScore !== null && q.aiScore !== undefined ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'
+              }`}>{i + 1}</button>
+          ))}
+        </div>
+        {currentIndex < questions.length - 1 ? (
+          <button onClick={() => { setCurrentIndex(currentIndex + 1); setUserAnswer(''); }} className="btn-secondary flex items-center gap-1 text-sm">
+           <FiChevronRight size={16} />
+          </button>
+        ) : allAnswered && currentSession.status !== 'completed' ? (
+          <button onClick={handleComplete} className="btn-primary flex items-center gap-1 text-sm">
+            <FiAward size={16} /> Complete Session
+          </button>
+        ) : (
+          <div className="w-24" />
+        )}
+      </div>
+
+      {/* for large devices */}
+          <div className="lg:flex items-center justify-between  hidden">
         <button onClick={() => { setCurrentIndex(Math.max(0, currentIndex - 1)); setUserAnswer(''); }}
           disabled={currentIndex === 0} className="btn-secondary flex items-center gap-1 text-sm">
           <FiChevronLeft size={16} /> Previous
@@ -134,7 +163,7 @@ export default function TextPractice() {
         </div>
         {currentIndex < questions.length - 1 ? (
           <button onClick={() => { setCurrentIndex(currentIndex + 1); setUserAnswer(''); }} className="btn-secondary flex items-center gap-1 text-sm">
-            Next <FiChevronRight size={16} />
+          Next <FiChevronRight size={16} />
           </button>
         ) : allAnswered && currentSession.status !== 'completed' ? (
           <button onClick={handleComplete} className="btn-primary flex items-center gap-1 text-sm">
